@@ -8,13 +8,15 @@ import puppeteer from "puppeteer";
     })
     const page = await browser.newPage()
 
-    await page.goto("https://play.typeracer.com", { waitUntil: 'networkidle2' })
+    await page.goto("https://keybr.com", { waitUntil: 'networkidle2' })
 
     console.log("Page title: ", await page.title());
-    const input = await page.waitForSelector("input.txtInput")
-    const text = await page.evaluate(() => {
-        return document.querySelector('.nonSelectable')?.innerText || "";
-    })
+    
+    await page.waitForSelector('a.U5FFRcTPG5.raIxoFOyiC');
+    await page.click('a.U5FFRcTPG5.raIxoFOyiC');
+
+    const input = await page.waitForSelector(".uKFykFQdcQ div")
+    const text = await page.$eval('.uKFykFQdcQ div', el => el.innerText);
 
     const config = {
        mistakes: {
@@ -26,7 +28,7 @@ import puppeteer from "puppeteer";
         }
     }
     console.log('Text to type: ', text);
-    await new Promise(r => setTimeout(r, 10000));
+    await new Promise(r => setTimeout(r, 50000));
     // await typeInto(input, text, config)
     await browser.close();
 })();
