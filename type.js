@@ -15,8 +15,8 @@ import puppeteer from "puppeteer";
     await page.waitForSelector('a.U5FFRcTPG5.raIxoFOyiC');
     await page.click('a.U5FFRcTPG5.raIxoFOyiC');
 
-    const input = await page.waitForSelector(".uKFykFQdcQ div")
-    const text = await page.$eval('.uKFykFQdcQ div', el => el.innerText);
+    const input = await page.waitForSelector(".VWtF2mmR6I.oP9Cza085L.vvFljv9VP8.kYHw0ywlCg div")
+    const text = await page.$eval('.VWtF2mmR6I.oP9Cza085L.vvFljv9VP8.kYHw0ywlCg div', el => el.innerText);
 
     const config = {
        mistakes: {
