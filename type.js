@@ -15,8 +15,9 @@ import puppeteer from "puppeteer";
     await page.waitForSelector('a.U5FFRcTPG5.raIxoFOyiC');
     await page.click('a.U5FFRcTPG5.raIxoFOyiC');
 
-    const input = await page.waitForSelector(".VWtF2mmR6I.oP9Cza085L.vvFljv9VP8.kYHw0ywlCg div")
-    const text = await page.$eval('.VWtF2mmR6I.oP9Cza085L.vvFljv9VP8.kYHw0ywlCg div', el => el.innerText);
+    const input = await page.waitForSelector("div.VWtF2mmR6I.oP9Cza085L.vvFljv9VP8.kYHw0ywlCg")
+    const text = await page.$eval('div.VWtF2mmR6I.oP9Cza085L.vvFljv9VP8.kYHw0ywlCg', el => el.innerText)
+    const op = text.replace(/\uE000/g, " ");
 
     const config = {
        mistakes: {
@@ -27,7 +28,8 @@ import puppeteer from "puppeteer";
             space: { chance: 50, min: 100, max: 300 }
         }
     }
-    console.log('Text to type: ', text);
+   
+    console.log('Text to type: ', op);
     await new Promise(r => setTimeout(r, 50000));
     // await typeInto(input, text, config)
     await browser.close();
